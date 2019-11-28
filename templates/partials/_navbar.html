@@ -1,0 +1,39 @@
+<header>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <div class="container">
+            <a class="navbar-brand" href="#">MovieApp</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup"
+                aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+                <div class="navbar-nav ml-auto">
+                    <a class="nav-item nav-link " href=" {% url 'index' %}">Movie App <span
+                            class="sr-only">(current)</span></a>
+                    <a class="nav-item nav-link" href="{% url 'about' %}">Products</a>
+                    <a class="nav-item nav-link" href="{% url 'movies' %}">Movies</a>
+                    {% if user.is_authenticated %}
+                    <a href="javascript:{document.getElementById('logout').submit()}" class="nav-item nav-link  mx-auto" href="{% url 'logout' %}">({{user.username}})logout</a>
+                    <form action="{% url 'logout'%}" method="POST" id="logout"> 
+                    {% csrf_token %}
+                    <input type="hidden"></input>
+                     </form>
+                    {% else %}
+
+                </div>
+                <div class="navbar-nav navbar-right">
+
+                    <a class="nav-item nav-link" href="{% url 'login' %}">login</a>
+                    <a class="nav-item nav-link" href="{% url 'register' %}">register</a>
+
+                </div>
+                {% endif %}
+
+
+
+
+            </div>
+        </div>
+
+    </nav>
+</header>
